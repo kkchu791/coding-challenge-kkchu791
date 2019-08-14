@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zip_code: 1
+  cbsa: 1
+
+two:
+  zip_code: 1
+  cbsa: 1
