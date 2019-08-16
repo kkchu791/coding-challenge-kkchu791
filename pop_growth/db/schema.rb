@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_230413) do
+ActiveRecord::Schema.define(version: 2019_08_16_163559) do
+
+  create_table "core_based_stat_areas", force: :cascade do |t|
+    t.string "cbsa"
+    t.string "mdiv"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "population_stats", force: :cascade do |t|
+    t.string "name"
+    t.string "lsad"
+    t.integer "pop_2015"
+    t.integer "pop_2014"
+    t.integer "core_based_stat_area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "zip_codes", force: :cascade do |t|
-    t.integer "zip_code"
-    t.integer "cbsa"
+    t.string "zip_code"
+    t.string "cbsa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
