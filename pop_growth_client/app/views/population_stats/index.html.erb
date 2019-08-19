@@ -8,9 +8,10 @@
 </div>
 
 <div class="upload-cbsa-btn">
-  <button>
-    Upload CBSA to MDA file
-  </button>
+  <%= form_tag "http://localhost:3001/upload_core_based_stat_areas", multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Upload CBSA to MDA file" %>
+  <% end %>
 </div>
 
 <div class="zip-search-form">

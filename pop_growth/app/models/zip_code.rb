@@ -1,6 +1,4 @@
 class ZipCode < ApplicationRecord
-
-
   def self.process_zip_file(file)
     ZipCode.destroy_all
     CSV.foreach(file, headers: true) do |row|

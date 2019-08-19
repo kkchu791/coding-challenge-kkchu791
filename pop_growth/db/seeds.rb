@@ -15,12 +15,12 @@ require 'csv'
 
 #seeding CBSA Table
 
-CoreBasedStatArea.destroy_all
-CSV.foreach('data/cbsa_to_msa.csv', headers: true, encoding:'iso-8859-1:utf-8') do |row|
-  cbsa = row.to_h
-  cbsa_attr = cbsa.keys[0]
-  record = CoreBasedStatArea.find_or_create_by(cbsa: cbsa[cbsa_attr], mdiv: cbsa["MDIV"])
-end
+# CoreBasedStatArea.destroy_all
+# CSV.foreach('data/cbsa_to_msa.csv', headers: true, encoding:'iso-8859-1:utf-8') do |row|
+#   cbsa = row.to_h
+#   cbsa_attr = cbsa.keys[0]
+#   record = CoreBasedStatArea.find_or_create_by(cbsa: cbsa[cbsa_attr], mdiv: cbsa["MDIV"])
+# end
 
 
 #seeding PopulationStat Table

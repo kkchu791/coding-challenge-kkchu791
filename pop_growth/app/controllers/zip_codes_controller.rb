@@ -6,5 +6,4 @@ class ZipCodesController < ApplicationController
     ZipCode.process_zip_file(file)
     puts "Done!"
   end
-
 end
