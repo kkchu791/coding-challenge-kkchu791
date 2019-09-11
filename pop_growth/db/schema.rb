@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_163559) do
+ActiveRecord::Schema.define(version: 2019_09_10_224312) do
+
+  create_table "batch_uploads", force: :cascade do |t|
+    t.boolean "active"
+    t.integer "status"
+    t.datetime "upload_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "core_based_stat_areas", force: :cascade do |t|
     t.string "cbsa"
@@ -27,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_163559) do
     t.integer "core_based_stat_area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "batch_upload_id"
   end
 
   create_table "zip_codes", force: :cascade do |t|

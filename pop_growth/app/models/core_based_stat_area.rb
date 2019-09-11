@@ -3,7 +3,7 @@ class CoreBasedStatArea < ApplicationRecord
 
   def self.process_core_based_stat_areas_file(file)
     reset_tables
-    CSV.foreach(file, headers: true, encoding:'iso-8859-1:utf-8').with_index do |row|
+    CSV.foreach(file, headers: true, encoding:'iso-8859-1:utf-8') do |row|
       data = row.to_h
       cbsa_attr = data.keys[0]
 

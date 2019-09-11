@@ -1,13 +1,15 @@
 @import "bootstrap";
 
-.results-table {
-}
-
 .cell {
   border: 1px solid black;
   padding: 10px;
 }
 
-div {
+.title, .upload-zip-btn, .upload-cbsa-btn,
+.zip-search-form, .results-table {
   margin: 20px 0;
+}
+
+label {
+  font-weight: 600;
 }

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  active: false
+  status: 1
+  upload_date: 2019-09-10 15:33:20
+
+two:
+  active: false
+  status: 1
+  upload_date: 2019-09-10 15:33:20

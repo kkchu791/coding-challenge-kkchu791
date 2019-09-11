@@ -1,6 +1,4 @@
-class ZipCodesController < ApplicationController
-  require 'csv'
-  
+class ZipCodesController < ApplicationController  
   def upload_zip_codes
     file = params[:file].tempfile
     ZipCode.process_zip_file(file)
