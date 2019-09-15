@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::API
 
-  def get_pop
-    byebug
-    @zip_code = zip_code_params[:zip_code]
-  end
+  def fetch_population_stats
+    zip_code = zip_code_params[:zip_code]
+    retriever = PopulationStatRetriever.new(zip_code)
+    population_stat = retriever.search
 
+    render json: population_stat
+  end
 
   private
 

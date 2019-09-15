@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get '/get_pop' => 'application#get_pop'
-  post '/upload_zip_codes' => 'zip_codes#upload_zip_codes'
-  post '/upload_core_based_stat_areas' => 'core_based_stat_areas#upload_core_based_stat_areas'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
+  get '/fetch_population_stats' => 'application#fetch_population_stats'
+  post '/upload' => 'batch_uploads#upload'
 end

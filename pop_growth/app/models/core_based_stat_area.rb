@@ -1,3 +1,5 @@
+require 'csv'
+
 class CoreBasedStatArea < ApplicationRecord
   has_many :population_stats
 

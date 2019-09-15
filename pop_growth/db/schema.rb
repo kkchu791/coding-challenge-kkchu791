@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_224312) do
+ActiveRecord::Schema.define(version: 2019_09_11_193242) do
 
   create_table "batch_uploads", force: :cascade do |t|
     t.boolean "active"
@@ -27,11 +27,17 @@ ActiveRecord::Schema.define(version: 2019_09_10_224312) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "population_estimates", force: :cascade do |t|
+    t.integer "year"
+    t.integer "estimate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "population_stat_id"
+  end
+
   create_table "population_stats", force: :cascade do |t|
     t.string "name"
     t.string "lsad"
-    t.integer "pop_2015"
-    t.integer "pop_2014"
     t.integer "core_based_stat_area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
