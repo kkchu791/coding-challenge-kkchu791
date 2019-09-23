@@ -1,5 +1,29 @@
 # PeerStreet Coding Challenge
 
+## Running Server
+
+```
+cd pop_growth
+bundle install
+rake db:migrate
+rails s -p 3001
+```
+
+## Running Sidekiq
+
+```
+cd pop_growth
+sidekiq -c 1
+```
+
+
+## Running Client
+
+```
+cd pop_growth_client
+rails s
+```
+
 ## Intro
 
 Hi! Thanks for applying at PeerStreet and taking the time to take on this coding challenge. We believe it’s very important to evaluate every candidate’s technical ability, but we also want to simulate a realistic challenge and environment you may encounter at our office. Optimizing algorithms on a whiteboard under a time constraint isn’t usually the case. As such, we’d like to give you an opportunity to work at your own pace on a problem that is actually relevant to PeerStreet and then discuss your solution during the onsite.
