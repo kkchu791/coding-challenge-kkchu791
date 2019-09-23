@@ -1,8 +1,7 @@
 <h1 class="title">Get population stats by Zip Code</h1>
 
-
 <div class="upload-zip-btn">
-  <%= form_tag "http://localhost:3001/upload_zip_codes", multipart: true do %>
+  <%= form_tag '/upload?type=zip_codes', method: :post, multipart: true do %>
     <div><%= label_tag 'zip_code', '1. Upload Zip Code File' %></div>
     <%= file_field_tag :file %>
     <%= submit_tag "Upload Zip Code to CBSA file" %>
@@ -10,7 +9,7 @@
 </div>
 
 <div class="upload-cbsa-btn">
-  <%= form_tag "http://localhost:3001/upload_core_based_stat_areas", multipart: true do %>
+  <%= form_tag '/upload?type=cbsa', method: :post, multipart: true do %>
     <div><%= label_tag 'cbsa', '2. Upload CBSA File' %></div>
     <%= file_field_tag :file %>
     <%= submit_tag "Upload CBSA to MDA file" %>
@@ -18,32 +17,34 @@
 </div>
 
 <div class="zip-search-form">
-  <div><%= label_tag 'search', '3. Search for a zip code and get population stats' %></div>
-  <input type="text" name="zip-code" value="">
-  <button>Search</button>
+  <%= form_tag '/fetch_population_stats', method: :get, multipart: true do %>
+    <div><%= label_tag 'search', '3. Search for a zip code and get population stats' %></div>
+    <input type="text" placeholder="Search..." name="zip_code" value="">
+    <%= submit_tag "Search" %>
+  <% end %>
 </div>
 
 <div class="results-table">
   <table>
     <tr>
       <th class="cell">Zip Code</th>
-      <td class="cell">32003</td>
+      <td class="cell"><%= @population_stat["zip_code"] %></td>
     </tr>
     <tr>
       <th class="cell">CBSA</th>
-      <td class="cell">27260</td>
+      <td class="cell"><%= @population_stat["cbsa"] %></td>
     </tr>
     <tr>
       <th class="cell">MSA</th>
-      <td class="cell">Jacksonville, Fl</td>
-    </tr>
-    <tr>
-      <th class="cell">Pop2015</th>
-      <td class="cell">1,449,481</td>
+      <td class="cell"><%= @population_stat["msa"] %></td>
     </tr>
     <tr>
       <th class="cell">Pop2014</th>
-      <td class="cell">1,421,004</td>
+      <td class="cell"><%= @population_stat["pop_2014"] %></td>
+    </tr>
+    <tr>
+      <th class="cell">Pop2015</th>
+      <td class="cell"><%= @population_stat["pop_2015"] %></td>
     </tr>
   </table>
 <div>

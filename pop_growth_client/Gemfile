@@ -15,6 +15,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
 gem 'httparty'
+gem 'flash_rails_messages'
 
 
 group :development, :test do

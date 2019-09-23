@@ -35,8 +35,6 @@ class CSVParser
       population_stat_record = create_population_stat_record(data, cbsa_record)
       create_population_estimate_records(data, population_stat_record)
     end
-
-    puts "CBSA process is finished"
   end
 
   private
@@ -57,13 +55,11 @@ class CSVParser
   end
 
   def create_population_estimate_records(data, population_stat_record)
-    #year 2014
-    unless data["POPESTIMATE2014"].nil?
-      PopulationEstimate.find_or_create_by!(year: 2014, estimate: data["POPESTIMATE2014"].to_i, population_stat_id: population_stat_record.id)
-    end
-    #year 2015
-    unless data["POPESTIMATE2015"].nil?
-      PopulationEstimate.find_or_create_by!(year: 2015, estimate: data["POPESTIMATE2015"].to_i, population_stat_id: population_stat_record.id)
+    data.each do |attr, value|
+      if attr.include?("POPESTIMATE") && value.present?
+        year = attr[-4..-1]
+        PopulationEstimate.find_or_create_by!(year: year, estimate: value.to_i, population_stat_id: population_stat_record.id)
+      end
     end
   end
 end

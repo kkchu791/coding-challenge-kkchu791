@@ -26,7 +26,11 @@ class PopulationStatRetriever
   private
 
   def zip_code_record
-    ZipCode.find_by(zip_code: zip_code)
+    zip_code_record = ZipCode.find_by(zip_code: zip_code)
+    if zip_code_record.nil?
+      raise "Could not find any matches for this zip code."
+    end
+    zip_code_record
   end
 
   def find_core_based_stat_area_record(cbsa_num)
@@ -36,11 +40,21 @@ class PopulationStatRetriever
       core_based_stat_area_record = CoreBasedStatArea.find_by(mdiv: cbsa_num)
     end
 
+    if core_based_stat_area_record.nil?
+      raise "Could not find a CBSA match for this zip code."
+    end
+
     core_based_stat_area_record
   end
 
   def find_population_stat_record(core_based_stat_area_record)
     population_stats = core_based_stat_area_record.population_stats
-    population_stats.where(lsad: "Metropolitan Statistical Area").first
+    population_stat_record = population_stats.where(lsad: "Metropolitan Statistical Area").first
+
+    if population_stat_record.nil?
+      raise "Could not find a population estimate for this zip code."
+    end
+
+    population_stat_record
   end
 end
